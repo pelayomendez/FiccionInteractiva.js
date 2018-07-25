@@ -1,9 +1,11 @@
-## FiccionInteractiva.js
+# FiccionInteractiva.js
 
 Es un motor de aventuras textuales conversacionales en castellano.
 Está desarrolado en Javascript (ES6) y orientado a crear textos para ser leidos en un navegador web.
 
 El motor está creado para publicar la historia "El túnel" que se ofrece como ejemplo.
+
+![](screenshoot.png)
 
 ## Proximos pasos
 
