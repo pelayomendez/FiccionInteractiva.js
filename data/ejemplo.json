@@ -1,0 +1,103 @@
+{
+	"titulo" : "EL TÚNEL.",
+	"descripcion" : "Un aventura textual oculta.",
+	"autor" : "Pelayo Méndez",
+	"fecha" : "2018",
+	"licencia" : "",
+	"comandosEjecutados" : 0,
+	"gameOver" : false,
+	"textoIntro" : "En mitad de la noche, tras varias horas conduciendo por una solitaria autopista de montaña, llegas a la entrada de un túnel.",
+    "textoFin" : "The end?",
+	"jugador" : {
+		"posicionActual" : "Comienzo",
+		"inventario" : {},
+		"iluminacion" : false
+	},
+	"mapa" : [
+		{
+			"id" : "Comienzo",
+			"primeraVisita" : true,
+			"titulo" : "Entrado en el túnel",
+			"descripcion" : "La boca de un túnel se abre ante tí en la carretera. Una señal de control de velocidad indica que no pueden superarse los 80Km/h en su interior. Un semaforo en verde muestra que el acceso al tunel está abierto.",
+			"interacciones" : {
+				"túnel" : { "mirar" : "La boca del túnel está reforzada con una estructura de cemento. Una hilera infinita de luces se adentra en su interior."},
+				"señal" : { "mirar" : "La señal reflactante indica el límite de velocidad de la carretera." },
+				"semáforo" : { "mirar" : "La luz del semáforo parpadea levemente. Está en verde." },
+				"coche" : { "mirar" : "El interior del coche está en penumbra. La luz de los controles apenas ilumina la cabina. Desde hace unos minutos la radio ha perdido la frecuencia y emite un ruido estático muy débil." },
+				"radio" : { 
+					"mirar" : "Una radio digital con frontal extraible. La radio está [radio_status].",
+					"sintonizar" : "#cambiar_emisora#",
+					"apagar" : "#apagar_radio#",
+					"encender" : "#encender_radio#" 
+				},
+				"guantera" : {  
+					"mirar" : "La guantera está [guantera_status].",
+					"abrir" : "#abrir_guantera#",
+					"cerrar" : "#cerrar_guantera#"
+				}
+			},
+			"objetos" : {
+				"mechero" : {
+					"displayName" : "mechero",
+					"description" : "Un mechero de gasolina.",
+					"status" : "apagado",
+					"cantidad" : 1,
+					"escondido" : true
+				}
+			},
+			"acciones" : {
+				"cambiar_emisora" : {
+					"descripcion" : "Mueves el dial de la radio tratando de encontrar una emisora sin éxito.",
+					"funcion" : "setVar('radio_status','encendida');"
+				},
+				"encender_radio" : {
+					"descripcion" : "Enciendes la radio.",
+					"funcion" : "setVar('radio_status','encendida');"
+				},
+				"apagar_radio" : {
+					"descripcion" : "Apagas la radio.",
+					"funcion" : "setVar('radio_status','apagada');"
+				},
+				"abrir_guantera" : {
+					"descripcion" : "Abres la guantera.",
+					"funcion" : "setVar('guantera_status','abierta');"
+				},
+				"cerrar_guantera" : {
+					"descripcion" : "Cierras la guantera.",
+					"funcion" : "setVar('guantera_status','cerrada');"
+				}
+			},
+			"variables" : {
+				"radio_status" : "encendida",
+				"guantera_status" : "cerrada"
+			},
+			"salidas" : [
+				{
+					"displayName" : "Conducir",
+					"destination" : "Tunel"
+				}]
+		},
+		{
+			"id" : "Tunel",
+			"primeraVisita" : true,
+			"titulo" : "En el tunel",
+			"descripcion" : "Conduces a través del tunel. Las lamparas interiores se suceden una tras otra. ",
+			"salidas" : [ 
+				{
+					"displayName" : "Conducir",
+					"destination" : "Final"
+				}]
+		},
+		{
+			"id" : "Final",
+			"primeraVisita" : true,
+			"titulo" : "Al otro lado",
+			"descripcion" : "De pronto el túnel termina sin previo aviso. La niebla cubre la carretera. El aire parece cubierto de ceniza. La linea contínua de la carretera te guía  a través de la noche.",
+			"salidas" : [
+				{
+					"displayName" : "Conducir",
+					"destination" : "TunelEntrada"
+				}]
+		}
+	]
+}
