@@ -5,7 +5,7 @@ Está desarrolado en Javascript (ES6) y orientado a crear textos para ser leidos
 
 El motor está creado para publicar la historia "El túnel" que se ofrece como ejemplo.
 
-![](screenshoot.png)
+![](screenshot.png)
 
 ## Proximos pasos
 
