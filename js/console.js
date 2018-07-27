@@ -5,17 +5,27 @@
 
 import FICoreEngine from './engine.js'
 
+let FIConsoleInstance
+
 class FIConsole {
 
     constructor() 
     {
-      this._version = "1.0"
-      this._type = 'FIConsole'
-      this._console = document.getElementById('console')
-      this._input = document.getElementById('input')
-      this._screen = document.getElementById('display')
-      this._console.addEventListener('submit', evt => this.onUserSubmitsText(evt));
-      this.displayResize()
+
+        if (!FIConsoleInstance) {
+            FIConsoleInstance = this;
+        }
+
+        this._version = "1.0"
+        this._type = 'FIConsole'
+        this._console = document.getElementById('console')
+        this._input = document.getElementById('input')
+        this._screen = document.getElementById('display')
+        this._console.addEventListener('submit', evt => this.onUserSubmitsText(evt));
+        this.displayResize()
+        
+        return FIConsoleInstance
+
     }
   
     get type() { return this._type }

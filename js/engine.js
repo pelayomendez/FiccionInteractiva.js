@@ -3,14 +3,24 @@
 // engine.js - Engine funcionality
 // v.0.1
 
+let FICoreEngineInstance
+
 class FICoreEngine {
 
     constructor() 
     {  
+
+      if (!FICoreEngineInstance) {
+        FICoreEngineInstance = this;
+      }
+  
       this._version = "1.0"
       this._type = 'FICoreEngine'
       this._fictionData = null
       this._actualLocation = null
+  
+      return FICoreEngineInstance
+  
     }
   
     // Getters & Setters 
