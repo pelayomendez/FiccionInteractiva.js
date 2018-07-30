@@ -19,6 +19,7 @@
 			"primeraVisita" : true,
 			"titulo" : "Entrado en el túnel",
 			"descripcion" : "La boca de un túnel se abre ante tí en la carretera. Una señal de control de velocidad indica que no pueden superarse los 80Km/h en su interior. Un semaforo en verde muestra que el acceso al tunel está abierto.",
+			"imagen" : "tunel_entrada.jpg",
 			"interacciones" : {
 				"túnel" : { "mirar" : "La boca del túnel está reforzada con una estructura de cemento. Una hilera infinita de luces se adentra en su interior."},
 				"señal" : { "mirar" : "La señal reflactante indica el límite de velocidad de la carretera." },
@@ -81,6 +82,7 @@
 			"id" : "Tunel",
 			"primeraVisita" : true,
 			"titulo" : "En el tunel",
+			"imagen" : "tunel_interior.jpg",
 			"descripcion" : "Conduces a través del tunel. Las lamparas interiores se suceden una tras otra. ",
 			"salidas" : [ 
 				{
@@ -92,6 +94,7 @@
 			"id" : "Final",
 			"primeraVisita" : true,
 			"titulo" : "Al otro lado",
+			"imagen" : "tunel_salida.jpg",
 			"descripcion" : "De pronto el túnel termina sin previo aviso. La niebla cubre la carretera. El aire parece cubierto de ceniza. La linea contínua de la carretera te guía  a través de la noche.",
 			"salidas" : [
 				{

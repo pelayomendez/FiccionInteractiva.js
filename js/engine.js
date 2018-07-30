@@ -3,6 +3,8 @@
 // engine.js - Engine funcionality
 // v.0.1
 
+import FIGraphicUtils from './graphics.js'
+
 let FICoreEngineInstance
 
 class FICoreEngine {
@@ -145,6 +147,14 @@ class FICoreEngine {
         locationText += '\n\n' +  this.fictionData.textoFin
       }
 
+      if(newLocation.imagen != '') {
+        var img = new Image();
+        img.onload = () => {
+          var result = FIGraphicUtils.imageToAscii(img)
+        }
+        img.src = './../data/images/'+newLocation.imagen;
+      }
+
       return locationText
 
     }
@@ -172,10 +182,13 @@ class FICoreEngine {
 
       var currentLocation = this.fictionData.mapa.find(((room) => { return room.id === this.actualLocation}))
 
-      var variableName = stringToReplace.match(/\[(.+?)\]/)[1]
-      var valueToReplace = currentLocation.variables[variableName]
+      var hasVariable=/\[(.+?)\]/;
+      if (hasVariable.test(stringToReplace)) {
+        var variableName = stringToReplace.match(/\[(.+?)\]/)[1]
+        var valueToReplace = currentLocation.variables[variableName]
+        stringToReplace = stringToReplace.replace(/\[(.+?)\]/g, valueToReplace)
+      }
 
-      stringToReplace = stringToReplace.replace(/\[(.+?)\]/g, valueToReplace)
       return stringToReplace
 
     }

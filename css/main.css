@@ -10,6 +10,7 @@
 	color: #00D100;
 	margin: 0;
 	border: none;
+	
 }
 
 *:focus {
@@ -21,7 +22,22 @@ html, body, #input, #display {
 	height: 100%;
 }
 
+#container {
+	width: 100%;
+	height: 100%;
+    padding: 0;
+    margin: 0;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 #input {
+	width: 960px;
 	height: 30px;
 	position: absolute;
 	bottom: 0;
@@ -29,16 +45,28 @@ html, body, #input, #display {
 	padding: 10px;
 }
 
+#sceenshoot {
+	position: relative;
+	font-size:2px;
+	z-index:100;
+	top:50;
+	left:50;
+}
+
 #display {
 	line-height: 1.5em;
-	padding: 50px;
-	overflow-y: scroll;
+	margin-top: 560px;
+	padding-left: 50px;
+	padding-right: 50px;
+	overflow-y: hidden;
 	overflow-x: hidden;
-	resize: none;
+	resize: none; 
+	width: 960px;
 }
 
 #display::-webkit-scrollbar {
 	width: 14px;
+	padding: 560px 50px 50px 50px;
 }
 
 #display::-webkit-scrollbar-thumb {

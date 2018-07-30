@@ -76,7 +76,7 @@ class FIConsole {
     // Resize terminal.
     displayResize() 
     {
-        this._screen.style.height = window.innerHeight - 30;
+        this._screen.style.height = window.innerHeight - 620;
         this._screen.scrollTop = this._screen.scrollHeight;
     }
 
