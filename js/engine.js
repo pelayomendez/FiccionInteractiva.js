@@ -140,9 +140,11 @@ class FICoreEngine {
       if(newLocation != 'undefinded') {
         this.actualLocation = newLocation.id
         locationText += '\n' + newLocation.titulo + ':\n\n' + newLocation.descripcion 
-        for(var i = 0; i < newLocation.objetos.length; i++) {
-          if(newLocation.objetos[i].visible) {
-            locationText += '\n\n'+newLocation.objetos[i].descripcionEscena
+        if(newLocation.objetos) {
+          for(var i = 0; i < newLocation.objetos.length; i++) {
+            if(newLocation.objetos[i].visible) {
+              locationText += '\n\n'+newLocation.objetos[i].descripcionEscena
+            }
           }
         }
         locationText += '\n\n...'
