@@ -109,11 +109,13 @@ class FICoreEngine {
           if(objectOnScene) {
             for(var a = i+1; a < words.length; a++) {
               let verbOnScene = objectOnScene[words[a]]
-              var isAnAction = verbOnScene.search(/#*#/i)
-              if(isAnAction == -1) {
-                return this.replaceVariablesValue(verbOnScene)
-              } else {
-                return this.processAction(verbOnScene.substring(1,verbOnScene.length-1))
+              if(verbOnScene) {
+                var isAnAction = verbOnScene.search(/#*#/i)
+                if(isAnAction == -1) {
+                  return this.replaceVariablesValue(verbOnScene)
+                } else {
+                  return this.processAction(verbOnScene.substring(1,verbOnScene.length-1))
+                }
               }
             }
           }
@@ -137,7 +139,13 @@ class FICoreEngine {
       
       if(newLocation != 'undefinded') {
         this.actualLocation = newLocation.id
-        locationText += '\n' + newLocation.titulo + ':\n\n' + newLocation.descripcion + '\n\n...'
+        locationText += '\n' + newLocation.titulo + ':\n\n' + newLocation.descripcion 
+        for(var i = 0; i < newLocation.objetos.length; i++) {
+          if(newLocation.objetos[i].visible) {
+            locationText += '\n\n'+newLocation.objetos[i].descripcionEscena
+          }
+        }
+        locationText += '\n\n...'
       } else {
         locationText = "Localización no encontrada."
       }
@@ -162,15 +170,26 @@ class FICoreEngine {
     // Process an action
     processAction(actionName) {
 
+      let actionText = ''
+
       var currentLocation = this.fictionData.mapa.find(((room) => { return room.id === this.actualLocation}))
 
       function setVar(varName, varValue) {
         currentLocation.variables[varName] = varValue
       }
 
+      function setObjVisibillity(objName, varValue) {
+        var selectedObj = currentLocation.objetos.find(((obj) => { return obj.displayName === objName}))
+        if(selectedObj != 'undefinded') {
+          selectedObj.visible = varValue
+          if(varValue) actionText += ' ' + selectedObj.descripcionEscena
+        }
+      }
+
       if(currentLocation.acciones[actionName]) {
+        actionText += currentLocation.acciones[actionName].descripcion
         eval(currentLocation.acciones[actionName].funcion)
-        return currentLocation.acciones[actionName].descripcion
+        return actionText
       }
 
       return "No consigues que funcione."

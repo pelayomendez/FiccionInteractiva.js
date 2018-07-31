@@ -24,7 +24,7 @@
 				"túnel" : { "mirar" : "La boca del túnel está reforzada con una estructura de cemento. Una hilera infinita de luces se adentra en su interior."},
 				"señal" : { "mirar" : "La señal reflactante indica el límite de velocidad de la carretera." },
 				"semáforo" : { "mirar" : "La luz del semáforo parpadea levemente. Está en verde." },
-				"coche" : { "mirar" : "El interior del coche está en penumbra. La luz de los controles apenas ilumina la cabina. Desde hace unos minutos la radio ha perdido la frecuencia y emite un ruido estático muy débil." },
+				"coche" : { "mirar" : "El interior del coche está en penumbra. La luz de los controles apenas ilumina la cabina. El vehículo tiene un salpicadero sencillo, un cenicero denota que es un coche antiguo, la guantera esta garabateada y en general ha conocido mejores días. Desde hace unos minutos la radio ha perdido la frecuencia y emite un ruido estático muy débil." },
 				"radio" : { 
 					"mirar" : "Una radio digital con frontal extraible. La radio está [radio_status].",
 					"sintonizar" : "#cambiar_emisora#",
@@ -37,15 +37,14 @@
 					"cerrar" : "#cerrar_guantera#"
 				}
 			},
-			"objetos" : {
-				"mechero" : {
+			"objetos" : [{
 					"displayName" : "mechero",
-					"description" : "Un mechero de gasolina.",
+					"descripcionEscena" : "En la guantera del coche hay un mechero de gasolina.",
+					"descriptionInventario" : "Un mechero de gasolina.",
 					"status" : "apagado",
 					"cantidad" : 1,
-					"escondido" : true
-				}
-			},
+					"visible" : false
+				}],
 			"acciones" : {
 				"cambiar_emisora" : {
 					"descripcion" : "Mueves el dial de la radio tratando de encontrar una emisora sin éxito.",
@@ -61,11 +60,11 @@
 				},
 				"abrir_guantera" : {
 					"descripcion" : "Abres la guantera.",
-					"funcion" : "setVar('guantera_status','abierta');"
+					"funcion" : "setVar('guantera_status','abierta');setObjVisibillity('mechero',true);"
 				},
 				"cerrar_guantera" : {
 					"descripcion" : "Cierras la guantera.",
-					"funcion" : "setVar('guantera_status','cerrada');"
+					"funcion" : "setVar('guantera_status','cerrada');setObjVisibillity('mechero',false);"
 				}
 			},
 			"variables" : {
